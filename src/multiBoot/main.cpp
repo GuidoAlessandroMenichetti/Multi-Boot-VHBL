@@ -11,6 +11,7 @@
 #define MAX_MENUS 10
 #define BUFFER_LEN 200
 #define CONFIG_FILE "MBMCFG.TXT"
+#define DUMMY_FILE "DUMMY.PBP"
 
 typedef struct 
 {
@@ -171,7 +172,7 @@ int main(int argc, char * argv[])
 	strcpy(menuOffset, exploit);
 
 	//Launch the dummy app
-	strcpy(strrchr(exploit, '/')+1, "DUMMY.TMP");
+	strcpy(strrchr(exploit, '/')+1, DUMMY_FILE);
 	strcpy((char*)ebootPath, exploit);
 	
 	sceKernelExitGame();
