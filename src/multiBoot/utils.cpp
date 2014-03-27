@@ -46,19 +46,16 @@ int SetupCallbacks()
 	return thid;
 };
 
-char * get_launch_address(int argc, char * hex_string)
+char * get_launch_address(char * hex_string)
 {
-	if(argc > 1)
+	tMenuApi * settings;
+	char * hex = hex_string;
+	*(hex + 8 ) = 0;
+	int apiAddr = xstrtoi(hex, 8); //transform string address into a hex number
+	if(apiAddr) 
 	{
-		tMenuApi * settings;
-		char * hex = hex_string;
-		*(hex + 8 ) = 0;
-		int apiAddr = xstrtoi(hex, 8); //transform string address into a hex number
-		if(apiAddr) 
-		{
-			settings = (tMenuApi *)apiAddr;
-			return settings->filename;
-		};
+		settings = (tMenuApi *)apiAddr;
+		return settings->filename;
 	};
 	
 	return NULL;

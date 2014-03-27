@@ -95,7 +95,8 @@ int main(int argc, char * argv[])
 	entry names[MAX_MENUS];
 	
 	count = getNames(CONFIG_FILE, names); //get names from CONFIG_FILE
-	ebootPath = get_launch_address(argc, argv[1]); //get next-to-launch string address (vhbl stuff)
+	if(argc > 1)
+		ebootPath = get_launch_address(argv[1]); //get next-to-launch string address (vhbl stuff)
 	SetupCallbacks();
 	pspDebugScreenInit();
 	pspDebugScreenClear();
